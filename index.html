@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Multitareas Modo Cooperativo</title>
+    <script src="vendo/jquery/jquery-3.1.1.js"></script>
+    <script src="vendo/materialize/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="vendo/materialize/css/materialize.min.css">
+    <!--Estilos Personales-->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="body center">
+        <h1>Multitareas</h1>
+        <h6>Modo Cooperativo</h6>
+        <div class="divider"></div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s6">
+                <video class="responsive-video hoverable" loop autoplay muted id="video">
+                    <source src="asset/movie.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="col s6">
+                <div class="row center">
+                    <h3>En progreso: <span class="actividad"></span></h3>
+                </div>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="10">Actividad 1 (10s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="5">Actividad 2 (5s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="1">Actividad 3 (1s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="3">Actividad 4 (3s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="6">Actividad 5 (6s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="9">Actividad 6 (9s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="2">Actividad 7 (2s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="4">Actividad 8 (4s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="6">Actividad 5 (6s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="9">Actividad 6 (9s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="2">Actividad 7 (2s)</a>
+                <a href="" class="btn waves-effect waves-linght" data-tiempo="4">Actividad 8 (4s)</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6 center">
+                <img src="asset/%7B.png" alt="" width="90%" height="30px">
+                <h4>S.O</h4>
+            </div>
+            <div class="col s6 center ">
+                <img src="asset/%7B.png" alt="" width="90%" height="30px">
+                <h4>Aplicaciones</h4>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                function sleep(milliseconds) {
+                    var start = new Date().getTime();
+                    for (var i = 0; i < 1e7; i++) {
+                        if ((new Date().getTime() - start) > milliseconds){
+                            break;
+                        }
+                    }
+                }
+                $('a').click(function (e) {
+                    e.preventDefault();
+                    var cont = $(this).text();
+                    var t = $(this).data('tiempo');
+                    $('.actividad').text(cont);
+                    $('#video').get(0).pause();
+                    sleep(t*1000);
+                    $('#video').get(0).play();
+                });
+            });
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--<script type="text/javascript">-->
+
+            <!--function vidplay() {-->
+                <!--var video = document.getElementById("Video1");-->
+                <!--var button = document.getElementById("play");-->
+                <!--if (video.paused) {-->
+                    <!--video.play();-->
+                    <!--button.textContent = "||";-->
+                <!--} else {-->
+                    <!--video.pause();-->
+                    <!--button.textContent = ">";-->
+                <!--}-->
+            <!--}-->
+
+            <!--function restart() {-->
+                <!--var video = document.getElementById("Video1");-->
+                <!--video.currentTime = 0;-->
+            <!--}-->
+
+            <!--function skip(value) {-->
+                <!--var video = document.getElementById("Video1");-->
+                <!--video.currentTime += value;-->
+            <!--}-->
+        <!--</script>-->
+
+
+        <!--<video id="Video1" >-->
+            <!--//  Replace these with your own video files.-->
+            <!--<source src="asset/movie.mp4" type="video/mp4" />-->
+            <!--HTML5 Video is required for this example.-->
+            <!--<a href="demo.mp4">Download the video</a> file.-->
+        <!--</video>-->
+
+        <!--<div id="buttonbar">-->
+            <!--<button id="restart" onclick="restart();">[]</button>-->
+            <!--<button id="rew" onclick="skip(-10)">&lt;&lt;</button>-->
+            <!--<button id="play" onclick="vidplay()">&gt;</button>-->
+            <!--<button id="fastFwd" onclick="skip(10)">&gt;&gt;</button>-->
+        <!--</div>-->
+    </div>
+</body>
+</html>
